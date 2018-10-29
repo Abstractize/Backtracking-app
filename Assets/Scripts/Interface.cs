@@ -34,11 +34,11 @@ public class Interface : MonoBehaviour {
     {
         
         lvl.text = "Level:" + (level + 1);
-        console.text = bt.console;
         DestroyObstacles();
         Matrix = GenMatrix.GenMatrix.Matrix(level);
         CreateObstacles(Matrix);
         Path = bt.solveMaze(Matrix);
+        console.text = bt.console;
         MatrixToVector3(Path);
         level++;
     }

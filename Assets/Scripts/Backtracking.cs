@@ -5,7 +5,7 @@ namespace Backtracking
     
     public class Backtracking
     {
-        public string console;
+        public string console = "";
         int N = 8;
 
         /* A utility function to print solution matrix 
@@ -24,6 +24,16 @@ namespace Backtracking
             index for N*N maze */
         bool isSafe(int[,] maze, int x, int y)
         {
+
+            if (x < 0 || x >= N || y < 0 ||
+                    y >= N)
+            {
+                console += "Out of bounds area\n";
+            }
+            else if (maze[x, y] == 1)
+            {
+                console += "Obstacle found, choosing new direction or backtracking...\n";
+            }
             // if (x,y outside maze) return false 
             return (x >= 0 && x < N && y >= 0 &&
                     y < N && maze[x, y] == 0);
@@ -52,6 +62,7 @@ namespace Backtracking
             if (solveMazeUtil(maze, 0, 0, sol) == false)
             {
                 Debug.Log("Solution doesn't exist");
+                console += "Solution doesn't exist\n";
                 return null;
             }
 
@@ -78,11 +89,13 @@ namespace Backtracking
                 sol[x, y] = 1;
 
                 /* Move forward in x direction */
+                console += "Moving forward in X direction\n";
                 if (solveMazeUtil(maze, x + 1, y, sol))
                     return true;
 
                 /* If moving in x direction doesn't give 
                    solution then  Move down in y direction */
+                console += "X path is blocked, now moving forward in direction\n";
                 if (solveMazeUtil(maze, x, y + 1, sol))
                     return true;
 
@@ -90,6 +103,7 @@ namespace Backtracking
                    BACKTRACK: unmark x,y as part of solution 
                    path */
                 sol[x, y] = 0;
+                console += "Y path is also blocked. Now backtracking\n";
                 return false;
             }
 
