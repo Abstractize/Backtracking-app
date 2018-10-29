@@ -109,6 +109,10 @@ namespace Backtracking
 
             return false;
         }
+        public void ClearConsole()
+        {
+            console = "";
+        }
     }
 }
 

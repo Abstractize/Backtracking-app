@@ -24,10 +24,11 @@ namespace GenMatrix
             {
                 int x = random.Next(7);
                 int y = random.Next(7);
-                
-                if (matrix[y, x] == 0)
+
+                if (x == 0 && y == 0 || x == 7 && y == 7 || x == 1 && y == 0 && matrix[1, 0] == 1 || x == 0 && y == 1 && matrix[0, 1] == 1 || x == 7 && y == 6 && matrix[7, 6] == 1 || x == 6 && y == 7 && matrix[6, 7] == 1) { }
+                else if (matrix[y, x] == 0)
                 {
-                    matrix[y, x] = 1;
+                    matrix[y, x] = 1; 
                     obstacles--;
                 }
             }

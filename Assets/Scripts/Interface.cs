@@ -41,6 +41,7 @@ public class Interface : MonoBehaviour {
         console.text = bt.console;
         MatrixToVector3(Path);
         level++;
+        bt.ClearConsole();
     }
     void MatrixToVector3(int[,] M)
     {
